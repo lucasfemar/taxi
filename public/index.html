@@ -1,11 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+        <meta name="generator" content="Hugo 0.122.0" />
+        <title>Signin Template · Bootstrap v5.3</title>
+
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
     </head>
-    <body>
-        <h1>Teste CD!</h1>
+    <body class="d-flex align-items-center py-4 bg-body-tertiary">
+        <main class="row justify-content-center w-100 m-auto">
+            <form class="col-4 text-center">
+                <h1 class="h3 mb-2 fw-normal">Preencha seu dados!</h1>
+                <div class="form-floating mb-1">
+                    <input type="text" class="form-control" id="iNome" placeholder="João Ferreira da Silva" />
+                    <label for="iNome">Nome completo</label>
+                </div>
+                <div class="form-floating mb-1">
+                    <input type="text" class="form-control" id="iCredencial" placeholder="Credencial" />
+                    <label for="iCredencial">Credencial</label>
+                </div>
+
+                <div class="form-floating mb-1">
+                    <input type="text" class="form-control" id="iModelo" placeholder="Modelo" />
+                    <label for="iModelo">Modelo</label>
+                </div>
+
+                <div class="form-floating mb-1">
+                    <input type="text" class="form-control" id="iPlaca" placeholder="Placa" />
+                    <label for="iPlaca">Placa</label>
+                </div>
+                <button class="btn btn-primary w-100 mt-2 py-2" id="btnSubmit" type="submit">Sign in</button>
+                <p class="mt-5 mb-3 text-body-secondary">© 2024</p>
+            </form>
+        </main>
+        <script src="/js/bootstrap.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>
