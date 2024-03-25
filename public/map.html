@@ -12,13 +12,11 @@
     <body>
         <div id="map"></div>
         <script src="plugins/maps.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
         <script>
             let map;
             async function start() {
                 //@ts-ignore
                 const { Map } = await google.maps.importLibrary('maps');
-                const socket = io();
 
                 const token = sessionStorage.getItem('token');
                 const credential = sessionStorage.getItem('credential');
