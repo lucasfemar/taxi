@@ -20,7 +20,7 @@ app.use(express.static('public'));
 app.use(express.static('pages'));
 
 app.get('/', (request, response) => {
-    response.sendFile(join(__dirname, '../pages/index.html'));
+    response.sendFile(join(__dirname, '../public/index.html'));
 });
 
 app.post('/', (request, response) => {
@@ -45,7 +45,7 @@ app.post('/', (request, response) => {
 });
 
 app.get('/map', (request, response) => {
-    response.sendFile(join(__dirname, '../pages/map.html'));
+    response.sendFile(join(__dirname, '../public/map.html'));
 });
 
 io.on('connection', (socket) => {
