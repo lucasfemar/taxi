@@ -17,6 +17,7 @@ const drivers = [];
 
 app.use(express.json());
 app.use(express.static('public'));
+app.use(express.static('pages'));
 
 app.get('/', (request, response) => {
     response.sendFile(join(__dirname, '../pages/index.html'));
