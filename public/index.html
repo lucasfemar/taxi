@@ -6,8 +6,8 @@
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
         <meta name="generator" content="Hugo 0.122.0" />
         <title>TAXI</title>
-        <link rel="icon" type="image/x-icon" href="../public/images/taxi_favicon.png" />
-        <link rel="stylesheet" type="text/css" href="../public/bootstrap/css/bootstrap.min.css" />
+        <link rel="icon" type="image/x-icon" href="images/taxi_favicon.png" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
     </head>
     <body class="d-flex align-items-center py-4 bg-body-tertiary">
         <main class="row justify-content-center w-100 m-auto">
@@ -35,7 +35,7 @@
                 <p class="mt-5 mb-3 text-body-secondary">© 2024</p>
             </form>
         </main>
-        <script src="../public/bootstrap/js/bootstrap.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
         <script>
             document.getElementById('btnSubmit').addEventListener('click', async (event) => {
                 event.preventDefault();
@@ -61,7 +61,7 @@
                     const { token, credential } = await response.json();
                     sessionStorage.setItem('token', token);
                     sessionStorage.setItem('credential', credential);
-                    window.location.href = '/map';
+                    window.location.href = '/map.html';
                 }
             });
         </script>

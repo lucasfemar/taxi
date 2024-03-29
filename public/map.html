@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+        <meta name="generator" content="Hugo 0.122.0" />
+        <title>TAXI</title>
+        <link rel="icon" type="image/x-icon" href="images/taxi_favicon.png" />
+        <link rel="stylesheet" type="text/css" href="styles/maps.css" />
+    </head>
+    <body>
+        <div id="map"></div>
+        <script src="plugins/maps.js"></script>
+        <script type="module">
+            async function renderMap(mapState, drivers) {
+                const { Map } = await google.maps.importLibrary('maps');
+                const map = new Map(document.getElementById('map'), {
+                    center: { lat: -23.633181, lng: -46.565575 },
+                    zoom: 17,
+                });
+
+                drivers.forEach((driver) => {
+                    new google.maps.Marker({
+                        position: driver.position,
+                        map,
+                        icon: 'images/icons8-táxi-24.png',
+                        title: driver.content,
+                    });
+                });
+                console.log(map);
+            }
+
+            // const token = sessionStorage.getItem('token');
+            // const credential = sessionStorage.getItem('credential');
+
+            // if (token && credential) {
+            //     socket.emit('setDriver', { token, credential });
+            // }
+
+            const driversPositions = [
+                {
+                    content: 'Car 1',
+                    position: { lat: -23.633181, lng: -46.565575 },
+                },
+                {
+                    content: 'Lucas',
+                    position: { lat: -23.666363, lng: -46.653302 },
+                },
+                {
+                    content: 'Car 2',
+                    position: { lat: -23.631685, lng: -46.563434 },
+                },
+
+                {
+                    content: 'Car 3',
+                    position: { lat: -23.631671, lng: -46.566806 },
+                },
+                {
+                    content: 'Car 4',
+                    position: { lat: -23.633952, lng: -46.561646 },
+                },
+            ];
+
+            renderMap('', driversPositions);
+        </script>
+    </body>
+</html>

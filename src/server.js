@@ -16,11 +16,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const drivers = [];
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (request, response) => {
-    response.sendFile(join(__dirname, '../pages/index.html'));
-});
+app.use(express.static('public'));
 
 app.post('/', (request, response) => {
     const { name, credential, carModel, carPlate } = request.body;
@@ -41,10 +37,6 @@ app.post('/', (request, response) => {
     } catch (error) {
         response.status(500).json({ error });
     }
-});
-
-app.get('/map', (request, response) => {
-    response.sendFile(join(__dirname, '../pages/map.html'));
 });
 
 io.on('connection', (socket) => {
