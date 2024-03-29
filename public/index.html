@@ -51,7 +51,7 @@
                     carPlate: iCarPlate.value,
                 };
 
-                const response = await fetch('http://localhost:8080/', {
+                const response = await fetch('/', {
                     method: 'POST',
                     headers: { 'Content-type': 'application/json;charset=UTF-8' },
                     body: JSON.stringify(body),
