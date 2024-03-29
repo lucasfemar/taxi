@@ -6,12 +6,12 @@
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
         <meta name="generator" content="Hugo 0.122.0" />
         <title>TAXI</title>
-        <link rel="icon" type="image/x-icon" href="./images/taxi_favicon.png" />
+        <link rel="icon" type="image/x-icon" href="../public/images/taxi_favicon.png" />
         <link rel="stylesheet" type="text/css" href="styles/maps.css" />
     </head>
     <body>
         <div id="map"></div>
-        <script src="plugins/maps.js"></script>
+        <script src="../public/plugins/maps.js"></script>
         <script>
             let map;
             async function start() {
@@ -58,7 +58,7 @@
                     new google.maps.Marker({
                         position: driver.position,
                         map,
-                        icon: '/images/icons8-táxi-24.png',
+                        icon: '../public/images/icons8-táxi-24.png',
                         title: driver.content,
                     });
                 });

@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { createServer } from 'node:http';
 import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import path, { dirname, join } from 'node:path';
 import { Server } from 'socket.io';
 
 dotenv.config();
@@ -16,10 +16,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const drivers = [];
 
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (request, response) => {
-    console.log('teste');
     response.sendFile(join(__dirname, '../pages/index.html'));
 });
 
