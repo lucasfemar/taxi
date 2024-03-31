@@ -36,7 +36,7 @@
             </form>
         </main>
         <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script>
+        <script type="module">
             document.getElementById('btnSubmit').addEventListener('click', async (event) => {
                 event.preventDefault();
                 const iName = document.getElementById('iName');
@@ -44,25 +44,18 @@
                 const iCarModel = document.getElementById('iCarModel');
                 const iCarPlate = document.getElementById('iCarPlate');
 
-                const body = {
+                const driver = {
                     name: iName.value,
                     credential: iCredential.value,
                     carModel: iCarModel.value,
                     carPlate: iCarPlate.value,
+                    position: {
+                        lat: -23.666614,
+                        lng: -46.653882,
+                    },
                 };
-
-                const response = await fetch('/', {
-                    method: 'POST',
-                    headers: { 'Content-type': 'application/json;charset=UTF-8' },
-                    body: JSON.stringify(body),
-                });
-
-                if (response.status === 200) {
-                    const { token, credential } = await response.json();
-                    sessionStorage.setItem('token', token);
-                    sessionStorage.setItem('credential', credential);
-                    window.location.href = '/map.html';
-                }
+                sessionStorage.setItem('driver', JSON.stringify(driver));
+                window.location.href = '/confirmation.html';
             });
         </script>
     </body>

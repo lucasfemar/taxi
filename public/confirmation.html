@@ -1,0 +1,47 @@
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+        <meta name="generator" content="Hugo 0.122.0" />
+        <title>TAXI</title>
+        <link rel="icon" type="image/x-icon" href="images/taxi_favicon.png" />
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    </head>
+    <body class="d-flex align-items-center py-4 bg-body-tertiary">
+        <main class="row justify-content-center w-100 m-auto">Tudo Ok !</main>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="module">
+            if (!sessionStorage.getItem('driver')) {
+                window.location.href = '/';
+            }
+            const driver = JSON.parse(sessionStorage.getItem('driver'));
+            Object.assign(driver, {
+                position: {
+                    lat: -23.666614,
+                    lng: -46.653882,
+                },
+            });
+            const socket = io();
+            socket.on('connect', () => {
+                driver.id = socket.id;
+                console.log(`> Frontend: request new driver ${driver.id}`);
+                socket.emit('add_driver', driver);
+            });
+
+            // setInterval(() => {
+            //     const driverData = {
+            //         ...driver,
+            //         position: {
+            //             lat: -23.7,
+            //             lng: -46.653882,
+            //         },
+            //     };
+            //     console.log(`> Frontend: request new driver position ${driverData.id}`);
+            //     socket.emit('update_driver_position', driverData);
+            // }, 3000);
+        </script>
+    </body>
+</html>
