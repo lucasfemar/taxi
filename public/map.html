@@ -65,7 +65,7 @@
             const socket = io();
 
             socket.on('setup', (state) => {
-                console.log(`> Frontend Mop: Setting new state`);
+                console.log(`> Frontend Map: Setting new state`);
                 map.setState(state);
                 mapScreen.setState(state);
             });
@@ -77,11 +77,13 @@
             });
 
             socket.on('update_driver', (command) => {
+                console.log(`> Frontend Map: Updating driver position ${JSON.stringify(command.position)}`);
                 map.updateDriverPosition(command);
                 mapScreen.updateDriverPosition(command);
             });
 
             socket.on('remove_driver', (command) => {
+                console.log(`> Frontend Map: Removing driver ${JSON.stringify(command.id)}`);
                 map.removeDriver(command);
                 mapScreen.removeDriver(command);
             });

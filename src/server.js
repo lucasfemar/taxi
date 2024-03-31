@@ -25,22 +25,18 @@ sockets.on('connection', (socket) => {
 
     socket.on('add_driver', (driver) => {
         driver.id = driverId;
-        console.log(`> Server: request new driver ${driver.id}`);
+        console.log(`> Server: Request new driver ${driver.id}`);
         map.addDriver(driver);
     });
 
-    socket.on('delete_driver', (driver) => {
-        console.log(`> Server: request remove driver ${driver.id}`);
-        map.removeDriver(driver);
-    });
-
-    socket.on('update_driver_position', (driverData) => {
-        console.log(`> Server: request new driver postition ${driverData.id}`);
-        map.updateDriverPosition(driverData);
+    socket.on('update_driver_position', (driver) => {
+        console.log(`> Server: Request new driver postition ${driver.position}`);
+        map.updateDriverPosition(driver);
     });
 
     socket.on('disconnect', () => {
         map.removeDriver({ id: driverId });
+        console.log(`> Server: Request delete driver ${driverId}`);
     });
 });
 

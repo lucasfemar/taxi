@@ -18,31 +18,37 @@
             if (!sessionStorage.getItem('driver')) {
                 window.location.href = '/';
             }
+
+            function setUpdateDriverPosition(driver) {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition((position) => {
+                        const newPosition = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        };
+                        driver.position = newPosition;
+                    });
+                }
+                return driver.position;
+            }
+
             const driver = JSON.parse(sessionStorage.getItem('driver'));
-            Object.assign(driver, {
-                position: {
-                    lat: -23.666614,
-                    lng: -46.653882,
-                },
-            });
+
             const socket = io();
             socket.on('connect', () => {
                 driver.id = socket.id;
+                driver.position = setUpdateDriverPosition(driver);
                 console.log(`> Frontend: request new driver ${driver.id}`);
                 socket.emit('add_driver', driver);
-            });
 
-            // setInterval(() => {
-            //     const driverData = {
-            //         ...driver,
-            //         position: {
-            //             lat: -23.7,
-            //             lng: -46.653882,
-            //         },
-            //     };
-            //     console.log(`> Frontend: request new driver position ${driverData.id}`);
-            //     socket.emit('update_driver_position', driverData);
-            // }, 3000);
+                setInterval(() => {
+                    driver.position = setUpdateDriverPosition(driver);
+                    console.log(
+                        `> Frontend Confirmation: Request new driver position ${JSON.stringify(driver.position)}`
+                    );
+                    socket.emit('update_driver_position', driver);
+                }, 1500);
+            });
         </script>
     </body>
 </html>

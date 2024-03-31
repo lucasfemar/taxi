@@ -34,7 +34,7 @@ export default function createMap() {
             carPlate,
             position,
         };
-        console.log(`> Map: Driver added ${JSON.stringify(state.drivers[command.id])}`);
+        console.log(`> Map: Driver added ${JSON.stringify(state.drivers[id])}`);
 
         notifyAll({
             type: 'new_driver',
@@ -49,6 +49,7 @@ export default function createMap() {
 
     function removeDriver(command) {
         const id = command.id;
+        console.log(`> Map: Removing driver ${JSON.stringify(id)}`);
 
         delete state.drivers[id];
 
@@ -65,9 +66,8 @@ export default function createMap() {
         const carModel = command.carModel;
         const carPlate = command.carPlate;
         const position = command.position;
-        console.log(`> Map: Updating driver position ${JSON.stringify(driver)}`);
+        console.log(`> Map: Updating driver position ${JSON.stringify(position)}`);
 
-        driver.position = position;
         notifyAll({
             type: 'update_driver',
             id,
