@@ -12,8 +12,9 @@
     <body class="d-flex align-items-center py-4 bg-body-tertiary">
         <main class="row justify-content-center w-100 m-auto">Tudo Ok !</main>
         <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
+        <!-- <script src="/socket.io/socket.io.js"></script> -->
         <script type="module">
+            import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js';
             if (!sessionStorage.getItem('driver')) {
                 window.location.href = '/';
             }

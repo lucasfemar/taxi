@@ -12,8 +12,9 @@
     <body>
         <div id="map"></div>
         <script src="plugins/maps.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
+        <!-- <script src="/socket.io/socket.io.js"></script> -->
         <script type="module">
+            import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js';
             import createMap from './map.js';
             async function renderMap() {
                 const { Map } = await google.maps.importLibrary('maps');
