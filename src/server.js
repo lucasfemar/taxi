@@ -40,6 +40,12 @@ sockets.on('connection', (socket) => {
     });
 });
 
+app.get('/status', (request, reponse) => {
+    reponse.status(200).json({
+        message: 'This is a test message',
+    });
+});
+
 server.listen(8080, () => {
     console.log('\x1b[36m%s\x1b[0m', 'Server running at http://localhost:8080');
 });
