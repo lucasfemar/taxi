@@ -46,6 +46,6 @@ app.get('/status', (request, reponse) => {
     });
 });
 
-server.listen(8080, () => {
+app.listen(8080, () => {
     console.log('\x1b[36m%s\x1b[0m', 'Server running at http://localhost:8080');
 });
